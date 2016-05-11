@@ -11,12 +11,19 @@ import UIKit
 /**
  Struct to generate paths for stars
  
- - author: Felix Deil
+ - author: Felix Deil, [Silviu Pop](https://www.weheartswift.com/bezier-paths-gesture-recognizers/)
  */
 internal struct Star {
     
     internal var pointsOnStar:Int = 5
     
+    /**
+     Returns the path for a star
+     
+     - author: [Silviu Pop](https://www.weheartswift.com/bezier-paths-gesture-recognizers/)
+     
+     - copyright: Silviu Pop
+     */
     private func starPathInRect(rect: CGRect) -> UIBezierPath {
         let path = UIBezierPath()
         
@@ -53,10 +60,20 @@ internal struct Star {
         return path
     }
     
+    /**
+     The `CGPath` of the star in `rect`
+     
+     - parameter rect: The square, that should contain the star
+     */
     internal func CGPathInRect(rect:CGRect) -> CGPath {
         return starPathInRect(rect).CGPath
     }
     
+    /**
+     The `UIBezierPath` of the star in `rect`
+     
+     - parameter rect: The square, that should contain the star
+     */
     internal func pathInRect(rect:CGRect) -> UIBezierPath {
         return starPathInRect(rect)
     }
