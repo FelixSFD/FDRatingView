@@ -11,6 +11,8 @@
 		DCE201C11CE3B0FA004050EA /* FDRatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCE201BE1CE3B0FA004050EA /* FDRatingView.swift */; };
 		DCE201C21CE3B0FA004050EA /* FDStarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCE201BF1CE3B0FA004050EA /* FDStarView.swift */; };
 		DCE201C31CE3B0FA004050EA /* Star.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCE201C01CE3B0FA004050EA /* Star.swift */; };
+		DCE7B89E1CE8C7E80066AC48 /* FDSquareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCE7B89D1CE8C7E80066AC48 /* FDSquareView.swift */; };
+		DCE7B8A31CE8CB240066AC48 /* FDRatingElementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCE7B8A21CE8CB240066AC48 /* FDRatingElementView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +22,8 @@
 		DCE201BE1CE3B0FA004050EA /* FDRatingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FDRatingView.swift; sourceTree = "<group>"; };
 		DCE201BF1CE3B0FA004050EA /* FDStarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FDStarView.swift; sourceTree = "<group>"; };
 		DCE201C01CE3B0FA004050EA /* Star.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Star.swift; sourceTree = "<group>"; };
+		DCE7B89D1CE8C7E80066AC48 /* FDSquareView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FDSquareView.swift; sourceTree = "<group>"; };
+		DCE7B8A21CE8CB240066AC48 /* FDRatingElementView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FDRatingElementView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +57,8 @@
 			isa = PBXGroup;
 			children = (
 				DCE201BE1CE3B0FA004050EA /* FDRatingView.swift */,
+				DCE7B8A21CE8CB240066AC48 /* FDRatingElementView.swift */,
+				DCE7B89F1CE8C7ED0066AC48 /* FDSquareView */,
 				DCE201C41CE3B103004050EA /* FDStarView */,
 				DCE201B61CE3B0EA004050EA /* FDRatingView.h */,
 				DCE201B81CE3B0EA004050EA /* Info.plist */,
@@ -67,6 +73,14 @@
 				DCE201C01CE3B0FA004050EA /* Star.swift */,
 			);
 			name = FDStarView;
+			sourceTree = "<group>";
+		};
+		DCE7B89F1CE8C7ED0066AC48 /* FDSquareView */ = {
+			isa = PBXGroup;
+			children = (
+				DCE7B89D1CE8C7E80066AC48 /* FDSquareView.swift */,
+			);
+			name = FDSquareView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -147,9 +161,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DCE7B8A31CE8CB240066AC48 /* FDRatingElementView.swift in Sources */,
 				DCE201C31CE3B0FA004050EA /* Star.swift in Sources */,
 				DCE201C21CE3B0FA004050EA /* FDStarView.swift in Sources */,
 				DCE201C11CE3B0FA004050EA /* FDRatingView.swift in Sources */,
+				DCE7B89E1CE8C7E80066AC48 /* FDSquareView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
