@@ -1,3 +1,4 @@
+# FDRatingView
 
 ## Requirements
 `FDRatingView` requires Swift 2.2 and Xcode 7.3.
@@ -32,4 +33,4 @@ view.addSubview(ratingView)
 let ratingView = FDRatingView(frame: CGRectMake(32, 32, 16, 16), numberOfStars: 3, fillValue: 3, color: UIColor.blackColor())
 view.addSubview(ratingView)
 ```
-# FDRatingView
+Use `pod 'FDRatingView', :git => 'https://github.com/FelixSFD/FDRatingView.git'` to install this pod
