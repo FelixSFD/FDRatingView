@@ -59,8 +59,12 @@ public class FDStarView: UIView {
      - parameter fillValue: `Float` bewteen 0 and 1
      
      - parameter color: The color of the star. Not the background of the view. Acts like `tintColor`
+     
+     - paramter lineWidth: The with of the border-line (default is 1, but for really small stars, lower values are recommended)
+     
+     - author: Felix Deil
      */
-    public init(frame:CGRect, fillValue fill:Float, color fillColor:UIColor) {
+    public init(frame:CGRect, fillValue fill:Float, color fillColor:UIColor, lineWidth:CGFloat) {
         super.init(frame: frame)
         
         //layer for complete filled star
@@ -73,7 +77,7 @@ public class FDStarView: UIView {
         borderStar = CAShapeLayer()
         borderStar.path = fullStar.path
         borderStar.fillColor = UIColor.clearColor().CGColor
-        borderStar.lineWidth = 1.0
+        borderStar.lineWidth = lineWidth
         borderStar.strokeColor = fillColor.CGColor
         self.layer.addSublayer(borderStar)
         
@@ -85,6 +89,21 @@ public class FDStarView: UIView {
         fillMask.path = fillPath.CGPath
         
         fullStar.mask = fillMask
+    }
+    
+    /**
+     Initializes the `FDStarView`
+     
+     - parameter frame: The frame for the view
+     
+     - parameter fillValue: `Float` bewteen 0 and 1
+     
+     - parameter color: The color of the star. Not the background of the view. Acts like `tintColor`
+     
+     - author: Felix Deil
+     */
+    public convenience init(frame:CGRect, fillValue fill:Float, color fillColor:UIColor) {
+        self.init(frame:frame, fillValue: fill, color: fillColor, lineWidth: 1)
     }
     
     /**
@@ -112,6 +131,8 @@ public class FDStarView: UIView {
      - parameter value: The new value
      
      - parameter animated: animations on or off (true/false)
+     
+     - author: Felix Deil
      */
     public func changeFillValue(value:Float, animated:Bool) {
         let fillWidth = frame.size.width * CGFloat(value)
