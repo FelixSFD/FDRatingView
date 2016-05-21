@@ -9,6 +9,13 @@
 import UIKit
 
 /**
+ Defines the different styles of `FDRatingView`
+ */
+public enum FDRatingViewStyle:Int {
+    case Star, Square, Circle
+}
+
+/**
  This view displays multiple `FDStarView` next to each other and fills them depending on the rating.
  
  - author: Felix Deil
@@ -18,17 +25,17 @@ public class FDRatingView:UIView {
     // - MARK: Public properties
     
     /**
-     The number of stars to display (default is 5)
+     The number of elements (for example stars) to display (default is 5)
      */
-    public var numberOfStars:UInt = 5
+    public var numberOfElements:UInt = 5
     
     override public var tintColor:UIColor! {
         get {
             return UIColor.blackColor()
         }
         set (color) {
-            for star in stars {
-                star.tintColor = color
+            for element in elements {
+                element.tintColor = color
             }
         }
     }
@@ -37,9 +44,9 @@ public class FDRatingView:UIView {
     // - MARK: Private properties
     
     /**
-     Stores all displayed stars in an `[FDStarView]`-array
+     Stores all displayed elements in an `[FDRatingElementView]`-array
      */
-    private var stars:[FDStarView]! = [FDStarView]()
+    private var elements:[FDRatingElementView]! = [FDRatingElementView]()
     
     
     // - MARK: Initializers
@@ -49,22 +56,24 @@ public class FDRatingView:UIView {
      
      - parameter frame: The frame for the view
      
-     - parameter numberOfStars: The number of start to be displayed (usually, that is NOT the rating=
+     - parameter style: The style how the rating will be displayed
      
-     - parameter fillValue: The value, how much of the stars should be filled. (the rating) This should be a `Float` between `0` and `numberOfStars`
+     - parameter numberOfElements: The number of elements to be displayed (usually, that is NOT the rating)
      
-     - parameter color: The color of the `FDStarView`s (acts like `tintColor`)
+     - parameter fillValue: The value, how much of the elements should be filled. (the rating) This should be a `Float` between `0` and `numberOfElements`
      
-     - parameter lineWidth: The with of the outer line of the stars
+     - parameter color: The color of the elements (acts like `tintColor`)
      
-     - parameter spacing: The space between the `FDStarView`s
+     - parameter lineWidth: The with of the outer line of the elements
+     
+     - parameter spacing: The space between the elements
      
      - author: Felix Deil
      */
-    public init(frame newFrame:CGRect, numberOfStars starsCount:UInt, fillValue value:Float, color:UIColor, lineWidth:CGFloat, spacing:CGFloat) {
+    public init(frame newFrame:CGRect, style:FDRatingViewStyle, numberOfElements:UInt, fillValue value:Float, color:UIColor, lineWidth:CGFloat, spacing:CGFloat) {
         var new = newFrame
-        let starsFloat = CGFloat(starsCount)
-        new.size.width = (newFrame.size.height + 8) * starsFloat - 8
+        let elementsFloat = CGFloat(numberOfElements)
+        new.size.width = (newFrame.size.height + spacing) * elementsFloat - spacing
         super.init(frame: new)
         
         tintColor = color
@@ -74,9 +83,9 @@ public class FDRatingView:UIView {
         
         var ratingValue = value
         
-        //create stars and store them in the array
-        for _ in 1...starsCount {
-            let starFrame = CGRectMake(xOffset, 0.0, height, height)
+        //create elements and store them in the array
+        for _ in 1...numberOfElements {
+            let elementFrame = CGRectMake(xOffset, 0.0, height, height)
             
             var tmpRating:Float = 0
             
@@ -88,14 +97,25 @@ public class FDRatingView:UIView {
                 ratingValue = 0
             }
             
-            stars.append(FDStarView(frame: starFrame, fillValue: tmpRating, color: color, lineWidth: lineWidth))
+            switch style {
+            case .Square:
+                elements.append(FDSquareView(frame: elementFrame, fillValue: tmpRating, color: color, lineWidth: lineWidth))
+                break;
+            case .Star:
+                elements.append(FDStarView(frame: elementFrame, fillValue: tmpRating, color: color, lineWidth: lineWidth))
+                break;
+            case .Circle:
+                elements.append(FDCircleView(frame: elementFrame, fillValue: tmpRating, color: color, lineWidth: lineWidth))
+                break;
+            }
+            
             xOffset += CGFloat(height + spacing)
         }
         
         
         //add them as subview (and set fillValue)
-        for star in stars {
-            addSubview(star)
+        for element in elements {
+            addSubview(element)
         }
     }
     
@@ -104,18 +124,20 @@ public class FDRatingView:UIView {
      
      - parameter frame: The frame for the view
      
-     - parameter numberOfStars: The number of start to be displayed (usually, that is NOT the rating=
+     - parameter style: The style how the rating will be displayed
      
-     - parameter fillValue: The value, how much of the stars should be filled. (the rating) This should be a `Float` between `0` and `numberOfStars`
+     - parameter numberOfElements: The number of elements to be displayed (usually, that is NOT the rating)
      
-     - parameter color: The color of the `FDStarView`s (acts like `tintColor`)
+     - parameter fillValue: The value, how much of the elements should be filled. (the rating) This should be a `Float` between `0` and `numberOfElements`
      
-     - parameter lineWidth: The with of the outer line of the stars
+     - parameter color: The color of the elements (acts like `tintColor`)
+     
+     - parameter lineWidth: The with of the outer line of the elements
      
      - author: Felix Deil
      */
-    public convenience init(frame newFrame:CGRect, numberOfStars starsCount:UInt, fillValue value:Float, color:UIColor, lineWidth:CGFloat) {
-        self.init(frame: newFrame, numberOfStars: starsCount, fillValue: value, color: color, lineWidth: lineWidth, spacing: 8.0)
+    public convenience init(frame newFrame:CGRect, style:FDRatingViewStyle, numberOfElements:UInt, fillValue value:Float, color:UIColor, lineWidth:CGFloat) {
+        self.init(frame: newFrame, style: style, numberOfElements: numberOfElements, fillValue: value, color: color, lineWidth: lineWidth, spacing: 8.0)
     }
     
     /**
@@ -123,16 +145,18 @@ public class FDRatingView:UIView {
      
      - parameter frame: The frame for the view
      
-     - parameter numberOfStars: The number of start to be displayed (usually, that is NOT the rating=
+     - parameter style: The style how the rating will be displayed
      
-     - parameter fillValue: The value, how much of the stars should be filled. (the rating) This should be a `Float` between `0` and `numberOfStars`
+     - parameter numberOfElements: The number of elements to be displayed (usually, that is NOT the rating)
      
-     - parameter color: The color of the `FDStarView`s (acts like `tintColor`)
+     - parameter fillValue: The value, how much of the elements should be filled. (the rating) This should be a `Float` between `0` and `numberOfElements`
+     
+     - parameter color: The color of the elements (acts like `tintColor`)
      
      - author: Felix Deil
      */
-    public convenience init(frame newFrame:CGRect, numberOfStars starsCount:UInt, fillValue value:Float, color:UIColor) {
-        self.init(frame: newFrame, numberOfStars: starsCount, fillValue: value, color: color, lineWidth: 1)
+    public convenience init(frame newFrame:CGRect, style:FDRatingViewStyle, numberOfElements:UInt, fillValue value:Float, color:UIColor) {
+        self.init(frame: newFrame, style: style, numberOfElements: numberOfElements, fillValue: value, color: color, lineWidth: 1)
     }
     
     /**

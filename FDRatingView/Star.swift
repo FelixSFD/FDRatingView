@@ -1,6 +1,6 @@
 //
 //  Star.swift
-//  DrawingTest
+//  FDRatingView
 //
 //  Created by Felix Deil on 11.05.16.
 //  Copyright © 2016 Felix Deil. All rights reserved.
