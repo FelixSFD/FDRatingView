@@ -12,7 +12,7 @@ import UIKit
  Defines the different styles of `FDRatingView`
  */
 public enum FDRatingViewStyle:Int {
-    case Star, Square
+    case Star, Square, Circle
 }
 
 /**
@@ -103,6 +103,9 @@ public class FDRatingView:UIView {
                 break;
             case .Star:
                 elements.append(FDStarView(frame: elementFrame, fillValue: tmpRating, color: color, lineWidth: lineWidth))
+                break;
+            case .Circle:
+                elements.append(FDCircleView(frame: elementFrame, fillValue: tmpRating, color: color, lineWidth: lineWidth))
                 break;
             }
             
