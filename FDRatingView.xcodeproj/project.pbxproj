@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DC32FB591D3E9EA300FDDEF4 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = DC32FB581D3E9EA300FDDEF4 /* .swiftlint.yml */; };
 		DC9A88811CF083040031B0D2 /* FDCircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9A88801CF083040031B0D2 /* FDCircleView.swift */; };
 		DCE201B71CE3B0EA004050EA /* FDRatingView.h in Headers */ = {isa = PBXBuildFile; fileRef = DCE201B61CE3B0EA004050EA /* FDRatingView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DCE201C11CE3B0FA004050EA /* FDRatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCE201BE1CE3B0FA004050EA /* FDRatingView.swift */; };
@@ -17,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		DC32FB581D3E9EA300FDDEF4 /* .swiftlint.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .swiftlint.yml; sourceTree = "<group>"; };
 		DC9A88801CF083040031B0D2 /* FDCircleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FDCircleView.swift; sourceTree = "<group>"; };
 		DCE201B31CE3B0EA004050EA /* FDRatingView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FDRatingView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DCE201B61CE3B0EA004050EA /* FDRatingView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FDRatingView.h; sourceTree = "<group>"; };
@@ -50,6 +52,7 @@
 		DCE201A91CE3B0E9004050EA = {
 			isa = PBXGroup;
 			children = (
+				DC32FB581D3E9EA300FDDEF4 /* .swiftlint.yml */,
 				DCE201B51CE3B0EA004050EA /* FDRatingView */,
 				DCE201B41CE3B0EA004050EA /* Products */,
 			);
@@ -112,6 +115,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = DCE201BB1CE3B0EA004050EA /* Build configuration list for PBXNativeTarget "FDRatingView" */;
 			buildPhases = (
+				DC32FB571D3E9E8C00FDDEF4 /* Code quality */,
 				DCE201AE1CE3B0EA004050EA /* Sources */,
 				DCE201AF1CE3B0EA004050EA /* Frameworks */,
 				DCE201B01CE3B0EA004050EA /* Headers */,
@@ -137,6 +141,7 @@
 				TargetAttributes = {
 					DCE201B21CE3B0EA004050EA = {
 						CreatedOnToolsVersion = 7.3;
+						LastSwiftMigration = 0800;
 					};
 				};
 			};
@@ -162,10 +167,28 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DC32FB591D3E9EA300FDDEF4 /* .swiftlint.yml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		DC32FB571D3E9E8C00FDDEF4 /* Code quality */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Code quality";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\nswiftlint\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		DCE201AE1CE3B0EA004050EA /* Sources */ = {
@@ -290,6 +313,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -307,6 +331,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = de.felixdeil.FDRatingView;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};

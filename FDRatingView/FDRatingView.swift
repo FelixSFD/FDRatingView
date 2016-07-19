@@ -11,8 +11,8 @@ import UIKit
 /**
  Defines the different styles of `FDRatingView`
  */
-public enum FDRatingViewStyle:Int {
-    case Star, Square, Circle
+public enum FDRatingViewStyle: Int {
+    case star, square, circle
 }
 
 /**
@@ -20,18 +20,18 @@ public enum FDRatingViewStyle:Int {
  
  - author: Felix Deil
  */
-public class FDRatingView:UIView {
+public class FDRatingView: UIView {
     
     // - MARK: Public properties
     
     /**
      The number of elements (for example stars) to display (default is 5)
      */
-    public var numberOfElements:UInt = 5
+    public var numberOfElements: UInt = 5
     
-    override public var tintColor:UIColor! {
+    override public var tintColor: UIColor! {
         get {
-            return UIColor.blackColor()
+            return UIColor.black()
         }
         set (color) {
             for element in elements {
@@ -46,7 +46,7 @@ public class FDRatingView:UIView {
     /**
      Stores all displayed elements in an `[FDRatingElementView]`-array
      */
-    private var elements:[FDRatingElementView]! = [FDRatingElementView]()
+    private var elements = [FDRatingElementView]()
     
     
     // - MARK: Initializers
@@ -70,7 +70,7 @@ public class FDRatingView:UIView {
      
      - author: Felix Deil
      */
-    public init(frame newFrame:CGRect, style:FDRatingViewStyle, numberOfElements:UInt, fillValue value:Float, color:UIColor, lineWidth:CGFloat, spacing:CGFloat) {
+    public init(frame newFrame: CGRect, style: FDRatingViewStyle, numberOfElements: UInt, fillValue value: Float, color: UIColor, lineWidth: CGFloat, spacing: CGFloat) {
         var new = newFrame
         let elementsFloat = CGFloat(numberOfElements)
         new.size.width = (newFrame.size.height + spacing) * elementsFloat - spacing
@@ -85,9 +85,9 @@ public class FDRatingView:UIView {
         
         //create elements and store them in the array
         for _ in 1...numberOfElements {
-            let elementFrame = CGRectMake(xOffset, 0.0, height, height)
+            let elementFrame = CGRect(x: xOffset, y: 0.0, width: height, height: height)
             
-            var tmpRating:Float = 0
+            var tmpRating: Float = 0
             
             if ratingValue > 1 {
                 tmpRating = 1
@@ -98,15 +98,15 @@ public class FDRatingView:UIView {
             }
             
             switch style {
-            case .Square:
+            case .square:
                 elements.append(FDSquareView(frame: elementFrame, fillValue: tmpRating, color: color, lineWidth: lineWidth))
-                break;
-            case .Star:
+                break
+            case .star:
                 elements.append(FDStarView(frame: elementFrame, fillValue: tmpRating, color: color, lineWidth: lineWidth))
-                break;
-            case .Circle:
+                break
+            case .circle:
                 elements.append(FDCircleView(frame: elementFrame, fillValue: tmpRating, color: color, lineWidth: lineWidth))
-                break;
+                break
             }
             
             xOffset += CGFloat(height + spacing)
@@ -136,7 +136,7 @@ public class FDRatingView:UIView {
      
      - author: Felix Deil
      */
-    public convenience init(frame newFrame:CGRect, style:FDRatingViewStyle, numberOfElements:UInt, fillValue value:Float, color:UIColor, lineWidth:CGFloat) {
+    public convenience init(frame newFrame: CGRect, style: FDRatingViewStyle, numberOfElements: UInt, fillValue value: Float, color: UIColor, lineWidth: CGFloat) {
         self.init(frame: newFrame, style: style, numberOfElements: numberOfElements, fillValue: value, color: color, lineWidth: lineWidth, spacing: 8.0)
     }
     
@@ -155,7 +155,7 @@ public class FDRatingView:UIView {
      
      - author: Felix Deil
      */
-    public convenience init(frame newFrame:CGRect, style:FDRatingViewStyle, numberOfElements:UInt, fillValue value:Float, color:UIColor) {
+    public convenience init(frame newFrame: CGRect, style: FDRatingViewStyle, numberOfElements: UInt, fillValue value: Float, color: UIColor) {
         self.init(frame: newFrame, style: style, numberOfElements: numberOfElements, fillValue: value, color: color, lineWidth: 1)
     }
     
@@ -165,7 +165,7 @@ public class FDRatingView:UIView {
     override private init(frame: CGRect) {
         super.init(frame: frame)
         
-        backgroundColor = UIColor.clearColor()
+        backgroundColor = UIColor.clear()
         tintColor = UIView().tintColor
     }
     

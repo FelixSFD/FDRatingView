@@ -20,32 +20,32 @@ public class FDSquareView: FDRatingElementView {
     /**
      The percentage of the square to be filled. Only use values between 0 and 1!
      */
-    private var fillValue:Float = 1
+    private var fillValue: Float = 1
     
     /**
      The layer that draws a fully filled square
      */
-    private var fullSquare:CAShapeLayer!
+    private var fullSquare: CAShapeLayer!
     
     /**
      The layer that draws the border of a star
      */
-    private var borderSquare:CAShapeLayer!
+    private var borderSquare: CAShapeLayer!
     
     /**
      An rectangular layer that is used as `mask` for `fullStar`.
      
      - NOTE: The height should always be the same as the views frame height. Only modify the width!
      */
-    private var fillMask:CAShapeLayer!
+    private var fillMask: CAShapeLayer!
     
-    override public var tintColor:UIColor! {
+    override public var tintColor: UIColor! {
         get {
-            return UIColor.blackColor()
+            return UIColor.black()
         }
         set (color) {
-            fullSquare.fillColor = color.CGColor
-            borderSquare.strokeColor = color.CGColor
+            fullSquare.fillColor = color.cgColor
+            borderSquare.strokeColor = color.cgColor
         }
     }
     
@@ -64,29 +64,29 @@ public class FDSquareView: FDRatingElementView {
      
      - author: Felix Deil
      */
-    public init(frame:CGRect, fillValue fill:Float, color fillColor:UIColor, lineWidth:CGFloat) {
+    public init(frame: CGRect, fillValue fill: Float, color fillColor: UIColor, lineWidth: CGFloat) {
         super.init(frame: frame)
         
         //layer for complete filled star
         fullSquare = CAShapeLayer()
-        fullSquare.path = UIBezierPath(rect: CGRectMake(0, 0, frame.size.height, frame.size.height)).CGPath
-        fullSquare.fillColor = fillColor.CGColor
+        fullSquare.path = UIBezierPath(rect: CGRect(x: 0, y: 0, width: frame.size.height, height: frame.size.height)).cgPath
+        fullSquare.fillColor = fillColor.cgColor
         self.layer.addSublayer(fullSquare)
         
         //layer for border
         borderSquare = CAShapeLayer()
         borderSquare.path = fullSquare.path
-        borderSquare.fillColor = UIColor.clearColor().CGColor
+        borderSquare.fillColor = UIColor.clear().cgColor
         borderSquare.lineWidth = lineWidth
-        borderSquare.strokeColor = fillColor.CGColor
+        borderSquare.strokeColor = fillColor.cgColor
         self.layer.addSublayer(borderSquare)
         
         
         //create fill-mask
         let fillWidth = frame.size.width * CGFloat(fill)
-        let fillPath = UIBezierPath(roundedRect: CGRectMake(0, 0, fillWidth, frame.size.height), cornerRadius: 0)
+        let fillPath = UIBezierPath(roundedRect: CGRect(x: 0, y: 0, width: fillWidth, height: frame.size.height), cornerRadius: 0)
         fillMask = CAShapeLayer()
-        fillMask.path = fillPath.CGPath
+        fillMask.path = fillPath.cgPath
         
         fullSquare.mask = fillMask
     }
@@ -102,7 +102,7 @@ public class FDSquareView: FDRatingElementView {
      
      - author: Felix Deil
      */
-    public convenience init(frame:CGRect, fillValue fill:Float, color fillColor:UIColor) {
+    public convenience init(frame: CGRect, fillValue fill: Float, color fillColor: UIColor) {
         self.init(frame:frame, fillValue: fill, color: fillColor, lineWidth: 1)
     }
     
@@ -112,7 +112,7 @@ public class FDSquareView: FDRatingElementView {
     override private init(frame: CGRect) {
         super.init(frame: frame)
         
-        backgroundColor = UIColor.clearColor()
+        backgroundColor = UIColor.clear()
         tintColor = UIView().tintColor
     }
     
@@ -134,10 +134,10 @@ public class FDSquareView: FDRatingElementView {
      
      - author: Felix Deil
      */
-    public func changeFillValue(value:Float, animated:Bool) {
+    public func changeFillValue(_ value: Float, animated: Bool) {
         let fillWidth = frame.size.width * CGFloat(value)
-        let fillPath = UIBezierPath(roundedRect: CGRectMake(0, 0, fillWidth, frame.size.height), cornerRadius: 0)
-        fillMask.path = fillPath.CGPath
+        let fillPath = UIBezierPath(roundedRect: CGRect(x: 0, y: 0, width: fillWidth, height: frame.size.height), cornerRadius: 0)
+        fillMask.path = fillPath.cgPath
     }
     
 }
