@@ -15,7 +15,7 @@ import UIKit
  */
 internal struct Star {
     
-    internal var pointsOnStar:Int = 5
+    internal var pointsOnStar: Int = 5
     
     /**
      Returns the path for a star
@@ -24,15 +24,15 @@ internal struct Star {
      
      - copyright: Silviu Pop
      */
-    private func starPathInRect(rect: CGRect) -> UIBezierPath {
+    private func starPathInRect(_ rect: CGRect) -> UIBezierPath {
         let path = UIBezierPath()
         
-        let starExtrusion:CGFloat = rect.width*0.19
+        let starExtrusion: CGFloat = rect.width*0.19
         
-        let center = CGPointMake(rect.width / 2.0, rect.height / 2.0)
+        let center = CGPoint(x: rect.width / 2.0, y: rect.height / 2.0)
         
         
-        var angle:CGFloat = -CGFloat(M_PI / 2.0)
+        var angle: CGFloat = -CGFloat(M_PI / 2.0)
         let angleIncrement = CGFloat(M_PI * 2.0 / Double(pointsOnStar))
         let radius = rect.width / 2.0
         
@@ -46,16 +46,16 @@ internal struct Star {
             
             if firstPoint {
                 firstPoint = false
-                path.moveToPoint(point)
+                path.move(to: point)
             }
             
-            path.addLineToPoint(midPoint)
-            path.addLineToPoint(nextPoint)
+            path.addLine(to: midPoint)
+            path.addLine(to: nextPoint)
             
             angle += angleIncrement
         }
         
-        path.closePath()
+        path.close()
         
         return path
     }
@@ -65,8 +65,8 @@ internal struct Star {
      
      - parameter rect: The square, that should contain the star
      */
-    internal func CGPathInRect(rect:CGRect) -> CGPath {
-        return starPathInRect(rect).CGPath
+    internal func CGPathInRect(_ rect: CGRect) -> CGPath {
+        return starPathInRect(rect).cgPath
     }
     
     /**
@@ -74,12 +74,12 @@ internal struct Star {
      
      - parameter rect: The square, that should contain the star
      */
-    internal func pathInRect(rect:CGRect) -> UIBezierPath {
+    internal func pathInRect(_ rect: CGRect) -> UIBezierPath {
         return starPathInRect(rect)
     }
     
-    private func pointFrom(angle: CGFloat, radius: CGFloat, offset: CGPoint) -> CGPoint {
-        return CGPointMake(radius * cos(angle) + offset.x, radius * sin(angle) + offset.y)
+    private func pointFrom(_ angle: CGFloat, radius: CGFloat, offset: CGPoint) -> CGPoint {
+        return CGPoint(x: radius * cos(angle) + offset.x, y: radius * sin(angle) + offset.y)
     }
     
     internal init() {

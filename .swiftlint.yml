@@ -1,0 +1,6 @@
+disabled_rules:
+- trailing_whitespace
+- line_length
+- nesting
+- conditional_binding_cascade
+- function_parameter_count
