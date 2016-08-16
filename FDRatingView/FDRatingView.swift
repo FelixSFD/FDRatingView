@@ -95,6 +95,8 @@ public class FDRatingView: UIView {
             } else if ratingValue > 0 {
                 tmpRating = ratingValue
                 ratingValue = 0
+            } else {
+                tmpRating = 0
             }
             
             switch style {
@@ -172,4 +174,32 @@ public class FDRatingView: UIView {
     required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    // - MARK: Set value of the RatingView
+    
+    /**
+     Sets the new value of the `FDRatingView`
+     
+     - parameter value: The new value. Should not be larger than `numberOfElements`
+     
+     - author: Felix Deil
+     */
+    public func set(value: Float) {
+        var tmpRating: Float = 0
+        var ratingValue = value
+        
+        for element in elements {
+            if ratingValue > 1 {
+                tmpRating = 1
+                ratingValue -= 1
+            } else if ratingValue > 0 {
+                tmpRating = ratingValue
+                ratingValue = 0
+            } else {
+                tmpRating = 0
+            }
+            element.changeFillValue(tmpRating, animated: false)
+        }
+    }
+    
 }

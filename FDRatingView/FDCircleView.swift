@@ -13,14 +13,11 @@ import UIKit
  
  - author: Felix Deil
  */
-public class FDCircleView: FDRatingElementView {
+internal class FDCircleView: FDRatingElementView {
     
     // - MARK: Private properties
     
-    /**
-     The percentage of the circle to be filled. Only use values between 0 and 1!
-     */
-    private var fillValue: Float = 1
+    
     
     /**
      The layer that draws a fully filled circle
@@ -32,14 +29,7 @@ public class FDCircleView: FDRatingElementView {
      */
     private var borderCircle: CAShapeLayer!
     
-    /**
-     An rectangular layer that is used as `mask` for `fullCircle`.
-     
-     - NOTE: The height should always be the same as the views frame height. Only modify the width!
-     */
-    private var fillMask: CAShapeLayer!
-    
-    override public var tintColor: UIColor! {
+    override internal var tintColor: UIColor! {
         get {
             return UIColor.black
         }
@@ -64,7 +54,7 @@ public class FDCircleView: FDRatingElementView {
      
      - author: Felix Deil
      */
-    public init(frame: CGRect, fillValue fill: Float, color fillColor: UIColor, lineWidth: CGFloat) {
+    internal init(frame: CGRect, fillValue fill: Float, color fillColor: UIColor, lineWidth: CGFloat) {
         super.init(frame: frame)
         
         //layer for complete filled star
@@ -102,7 +92,7 @@ public class FDCircleView: FDRatingElementView {
      
      - author: Felix Deil
      */
-    public convenience init(frame: CGRect, fillValue fill: Float, color fillColor: UIColor) {
+    internal convenience init(frame: CGRect, fillValue fill: Float, color fillColor: UIColor) {
         self.init(frame:frame, fillValue: fill, color: fillColor, lineWidth: 1)
     }
     
@@ -116,28 +106,8 @@ public class FDCircleView: FDRatingElementView {
         tintColor = UIView().tintColor
     }
     
-    required public init?(coder aDecoder: NSCoder) {
+    required internal init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-    
-    
-    // - MARK: Modifying the circle
-    
-    /**
-     Changes how much of the circle is filled.
-     
-     - WARNING: animation does NOT work yet!
-     
-     - parameter value: The new value
-     
-     - parameter animated: animations on or off (true/false)
-     
-     - author: Felix Deil
-     */
-    public func changeFillValue(_ value: Float, animated: Bool) {
-        let fillWidth = frame.size.width * CGFloat(value)
-        let fillPath = UIBezierPath(roundedRect: CGRect(x: 0, y: 0, width: fillWidth, height: frame.size.height), cornerRadius: 0)
-        fillMask.path = fillPath.cgPath
     }
     
 }
