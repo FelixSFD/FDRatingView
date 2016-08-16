@@ -41,7 +41,7 @@ public class FDStarView: FDRatingElementView {
     
     override public var tintColor: UIColor! {
         get {
-            return UIColor.black()
+            return UIColor.black
         }
         set (color) {
             fullStar.fillColor = color.cgColor
@@ -76,7 +76,7 @@ public class FDStarView: FDRatingElementView {
         //layer for border
         borderStar = CAShapeLayer()
         borderStar.path = fullStar.path
-        borderStar.fillColor = UIColor.clear().cgColor
+        borderStar.fillColor = UIColor.clear.cgColor
         borderStar.lineWidth = lineWidth
         borderStar.strokeColor = fillColor.cgColor
         self.layer.addSublayer(borderStar)
@@ -112,7 +112,7 @@ public class FDStarView: FDRatingElementView {
     override private init(frame: CGRect) {
         super.init(frame: frame)
         
-        backgroundColor = UIColor.clear()
+        backgroundColor = UIColor.clear
         tintColor = UIView().tintColor
     }
     

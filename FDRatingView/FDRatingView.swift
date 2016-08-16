@@ -31,7 +31,7 @@ public class FDRatingView: UIView {
     
     override public var tintColor: UIColor! {
         get {
-            return UIColor.black()
+            return UIColor.black
         }
         set (color) {
             for element in elements {
@@ -165,7 +165,7 @@ public class FDRatingView: UIView {
     override private init(frame: CGRect) {
         super.init(frame: frame)
         
-        backgroundColor = UIColor.clear()
+        backgroundColor = UIColor.clear
         tintColor = UIView().tintColor
     }
     

@@ -41,7 +41,7 @@ public class FDCircleView: FDRatingElementView {
     
     override public var tintColor: UIColor! {
         get {
-            return UIColor.black()
+            return UIColor.black
         }
         set (color) {
             fullCircle.fillColor = color.cgColor
@@ -76,7 +76,7 @@ public class FDCircleView: FDRatingElementView {
         //layer for border
         borderCircle = CAShapeLayer()
         borderCircle.path = fullCircle.path
-        borderCircle.fillColor = UIColor.clear().cgColor
+        borderCircle.fillColor = UIColor.clear.cgColor
         borderCircle.lineWidth = lineWidth
         borderCircle.strokeColor = fillColor.cgColor
         self.layer.addSublayer(borderCircle)
@@ -112,7 +112,7 @@ public class FDCircleView: FDRatingElementView {
     override private init(frame: CGRect) {
         super.init(frame: frame)
         
-        backgroundColor = UIColor.clear()
+        backgroundColor = UIColor.clear
         tintColor = UIView().tintColor
     }
     

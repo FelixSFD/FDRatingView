@@ -41,7 +41,7 @@ public class FDSquareView: FDRatingElementView {
     
     override public var tintColor: UIColor! {
         get {
-            return UIColor.black()
+            return UIColor.black
         }
         set (color) {
             fullSquare.fillColor = color.cgColor
@@ -76,7 +76,7 @@ public class FDSquareView: FDRatingElementView {
         //layer for border
         borderSquare = CAShapeLayer()
         borderSquare.path = fullSquare.path
-        borderSquare.fillColor = UIColor.clear().cgColor
+        borderSquare.fillColor = UIColor.clear.cgColor
         borderSquare.lineWidth = lineWidth
         borderSquare.strokeColor = fillColor.cgColor
         self.layer.addSublayer(borderSquare)
@@ -112,7 +112,7 @@ public class FDSquareView: FDRatingElementView {
     override private init(frame: CGRect) {
         super.init(frame: frame)
         
-        backgroundColor = UIColor.clear()
+        backgroundColor = UIColor.clear
         tintColor = UIView().tintColor
     }
     
