@@ -27,9 +27,9 @@ internal class FDSquareView: FDRatingElementView {
      */
     private var borderSquare: CAShapeLayer!
     
-    override internal var tintColor: UIColor! {
+    override internal var tintColor: FDColor! {
         get {
-            return UIColor.black
+            return FDColor.black
         }
         set (color) {
             fullSquare.fillColor = color.cgColor
@@ -52,7 +52,7 @@ internal class FDSquareView: FDRatingElementView {
      
      - author: Felix Deil
      */
-    internal init(frame: CGRect, fillValue fill: Float, color fillColor: UIColor, lineWidth: CGFloat) {
+    internal init(frame: CGRect, fillValue fill: Float, color fillColor: FDColor, lineWidth: CGFloat) {
         super.init(frame: frame)
         
         //layer for complete filled star
@@ -64,7 +64,7 @@ internal class FDSquareView: FDRatingElementView {
         //layer for border
         borderSquare = CAShapeLayer()
         borderSquare.path = fullSquare.path
-        borderSquare.fillColor = UIColor.clear.cgColor
+        borderSquare.fillColor = FDColor.clear.cgColor
         borderSquare.lineWidth = lineWidth
         borderSquare.strokeColor = fillColor.cgColor
         self.layer.addSublayer(borderSquare)
@@ -90,7 +90,7 @@ internal class FDSquareView: FDRatingElementView {
      
      - author: Felix Deil
      */
-    internal convenience init(frame: CGRect, fillValue fill: Float, color fillColor: UIColor) {
+    internal convenience init(frame: CGRect, fillValue fill: Float, color fillColor: FDColor) {
         self.init(frame:frame, fillValue: fill, color: fillColor, lineWidth: 1)
     }
     
@@ -100,8 +100,8 @@ internal class FDSquareView: FDRatingElementView {
     override private init(frame: CGRect) {
         super.init(frame: frame)
         
-        backgroundColor = UIColor.clear
-        tintColor = UIView().tintColor
+        backgroundColor = FDColor.clear
+        tintColor = FDView().tintColor
     }
     
     required internal init?(coder aDecoder: NSCoder) {

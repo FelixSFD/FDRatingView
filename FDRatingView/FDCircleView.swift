@@ -29,9 +29,9 @@ internal class FDCircleView: FDRatingElementView {
      */
     private var borderCircle: CAShapeLayer!
     
-    override internal var tintColor: UIColor! {
+    override internal var tintColor: FDColor! {
         get {
-            return UIColor.black
+            return FDColor.black
         }
         set (color) {
             fullCircle.fillColor = color.cgColor
@@ -54,7 +54,7 @@ internal class FDCircleView: FDRatingElementView {
      
      - author: Felix Deil
      */
-    internal init(frame: CGRect, fillValue fill: Float, color fillColor: UIColor, lineWidth: CGFloat) {
+    internal init(frame: CGRect, fillValue fill: Float, color fillColor: FDColor, lineWidth: CGFloat) {
         super.init(frame: frame)
         
         //layer for complete filled star
@@ -66,7 +66,7 @@ internal class FDCircleView: FDRatingElementView {
         //layer for border
         borderCircle = CAShapeLayer()
         borderCircle.path = fullCircle.path
-        borderCircle.fillColor = UIColor.clear.cgColor
+        borderCircle.fillColor = FDColor.clear.cgColor
         borderCircle.lineWidth = lineWidth
         borderCircle.strokeColor = fillColor.cgColor
         self.layer.addSublayer(borderCircle)
@@ -92,7 +92,7 @@ internal class FDCircleView: FDRatingElementView {
      
      - author: Felix Deil
      */
-    internal convenience init(frame: CGRect, fillValue fill: Float, color fillColor: UIColor) {
+    internal convenience init(frame: CGRect, fillValue fill: Float, color fillColor: FDColor) {
         self.init(frame:frame, fillValue: fill, color: fillColor, lineWidth: 1)
     }
     
@@ -102,8 +102,8 @@ internal class FDCircleView: FDRatingElementView {
     override private init(frame: CGRect) {
         super.init(frame: frame)
         
-        backgroundColor = UIColor.clear
-        tintColor = UIView().tintColor
+        backgroundColor = FDColor.clear
+        tintColor = FDView().tintColor
     }
     
     required internal init?(coder aDecoder: NSCoder) {
