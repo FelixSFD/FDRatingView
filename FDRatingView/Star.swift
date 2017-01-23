@@ -24,7 +24,7 @@ internal struct Star {
      
      - copyright: Silviu Pop
      */
-    private func starPathInRect(_ rect: CGRect) -> UIBezierPath {
+    fileprivate func starPathInRect(_ rect: CGRect) -> UIBezierPath {
         let path = UIBezierPath()
         
         let starExtrusion: CGFloat = rect.width*0.19
@@ -78,7 +78,7 @@ internal struct Star {
         return starPathInRect(rect)
     }
     
-    private func pointFrom(_ angle: CGFloat, radius: CGFloat, offset: CGPoint) -> CGPoint {
+    fileprivate func pointFrom(_ angle: CGFloat, radius: CGFloat, offset: CGPoint) -> CGPoint {
         return CGPoint(x: radius * cos(angle) + offset.x, y: radius * sin(angle) + offset.y)
     }
     

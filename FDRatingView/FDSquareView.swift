@@ -20,12 +20,12 @@ internal class FDSquareView: FDRatingElementView {
     /**
      The layer that draws a fully filled square
      */
-    private var fullSquare: CAShapeLayer!
+    fileprivate var fullSquare: CAShapeLayer!
     
     /**
      The layer that draws the border of a star
      */
-    private var borderSquare: CAShapeLayer!
+    fileprivate var borderSquare: CAShapeLayer!
     
     override internal var tintColor: UIColor! {
         get {
@@ -97,7 +97,7 @@ internal class FDSquareView: FDRatingElementView {
     /**
      Initializes the view with a frame
      */
-    override private init(frame: CGRect) {
+    override fileprivate init(frame: CGRect) {
         super.init(frame: frame)
         
         backgroundColor = UIColor.clear

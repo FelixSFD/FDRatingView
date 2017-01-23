@@ -20,16 +20,16 @@ public enum FDRatingViewStyle: Int {
  
  - author: Felix Deil
  */
-public class FDRatingView: UIView {
+open class FDRatingView: UIView {
     
     // - MARK: Public properties
     
     /**
      The number of elements (for example stars) to display (default is 5)
      */
-    public var numberOfElements: UInt = 5
+    open var numberOfElements: UInt = 5
     
-    override public var tintColor: UIColor! {
+    override open var tintColor: UIColor! {
         get {
             return UIColor.black
         }
@@ -46,7 +46,7 @@ public class FDRatingView: UIView {
     /**
      Stores all displayed elements in an `[FDRatingElementView]`-array
      */
-    private var elements = [FDRatingElementView]()
+    fileprivate var elements = [FDRatingElementView]()
     
     
     // - MARK: Initializers
@@ -164,7 +164,7 @@ public class FDRatingView: UIView {
     /**
      Initializes the view with a frame
      */
-    override private init(frame: CGRect) {
+    override fileprivate init(frame: CGRect) {
         super.init(frame: frame)
         
         backgroundColor = UIColor.clear
@@ -184,7 +184,7 @@ public class FDRatingView: UIView {
      
      - author: Felix Deil
      */
-    public func set(value: Float) {
+    open func set(_ value: Float) {
         var tmpRating: Float = 0
         var ratingValue = value
         

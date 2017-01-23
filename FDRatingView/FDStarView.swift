@@ -20,12 +20,12 @@ internal class FDStarView: FDRatingElementView {
     /**
      The layer that draws a fully filled star
      */
-    private var fullStar: CAShapeLayer!
+    fileprivate var fullStar: CAShapeLayer!
     
     /**
      The layer that draws the border of a star
      */
-    private var borderStar: CAShapeLayer!
+    fileprivate var borderStar: CAShapeLayer!
     
     override internal var tintColor: UIColor! {
         get {
@@ -97,7 +97,7 @@ internal class FDStarView: FDRatingElementView {
     /**
      Initializes the view with a frame
      */
-    override private init(frame: CGRect) {
+    override fileprivate init(frame: CGRect) {
         super.init(frame: frame)
         
         backgroundColor = UIColor.clear
