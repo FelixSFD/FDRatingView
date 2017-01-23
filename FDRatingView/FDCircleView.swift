@@ -22,12 +22,12 @@ internal class FDCircleView: FDRatingElementView {
     /**
      The layer that draws a fully filled circle
      */
-    private var fullCircle: CAShapeLayer!
+    fileprivate var fullCircle: CAShapeLayer!
     
     /**
      The layer that draws the border of a circle
      */
-    private var borderCircle: CAShapeLayer!
+    fileprivate var borderCircle: CAShapeLayer!
     
     override internal var tintColor: UIColor! {
         get {
@@ -99,10 +99,10 @@ internal class FDCircleView: FDRatingElementView {
     /**
      Initializes the view with a frame
      */
-    override private init(frame: CGRect) {
+    override fileprivate init(frame: CGRect) {
         super.init(frame: frame)
         
-        backgroundColor = UIColor.clear
+        backgroundColor = .clear
         tintColor = UIView().tintColor
     }
     
