@@ -43,6 +43,11 @@ public class FDRatingView: FDView {
         }
     }
     
+    /**
+     If `true`, tapping an item can result in a decimal value for the `FDRatingView`. Otherwise, `ceilf()` is used.
+     */
+    public var allowDecimalValues = false
+    
     
     // - MARK: Private properties
     
@@ -215,15 +220,17 @@ public class FDRatingView: FDView {
     
     // - MARK: Handle touches (iOS-only!)
     #if os(iOS)
-    func tapHandler(_ gesture: UITapGestureRecognizer) {
+    internal func tapHandler(_ gesture: UITapGestureRecognizer) {
         //only fire when touch ends
         if gesture.state == .ended {
             let tapLocation = gesture.location(in: self)
-            print()
+            var tappedItem = Float(tapLocation.x/(self.frame.width/CGFloat(numberOfElements)))
             
-            let tappedItem = ceilf(Float(tapLocation.x/(self.frame.width/CGFloat(numberOfElements))))
+            if !allowDecimalValues {
+                tappedItem = ceilf(tappedItem)
+            }
+            
             print(tappedItem)
-            
             set(value: tappedItem)
         }
     }
