@@ -6,7 +6,8 @@
 //  Copyright © 2016 Felix Deil. All rights reserved.
 //
 
-import UIKit
+//import UIKit
+import QuartzCore
 
 /**
  Defines the different styles of `FDRatingView`

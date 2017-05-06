@@ -6,7 +6,9 @@
 //  Copyright © 2016 Felix Deil. All rights reserved.
 //
 
-import UIKit
+//import UIKit
+import QuartzCore
+import CoreGraphics
 
 /**
  This `UIView` displays a square, that can be fully or partially filled.
@@ -57,7 +59,7 @@ internal class FDSquareView: FDRatingElementView {
         
         //layer for complete filled star
         fullSquare = CAShapeLayer()
-        fullSquare.path = UIBezierPath(rect: CGRect(x: 0, y: 0, width: frame.size.height, height: frame.size.height)).cgPath
+        fullSquare.path = FDBezierPath(rect: CGRect(x: 0, y: 0, width: frame.size.height, height: frame.size.height)).cgPath
         fullSquare.fillColor = fillColor.cgColor
         self.layer.addSublayer(fullSquare)
         
@@ -72,7 +74,7 @@ internal class FDSquareView: FDRatingElementView {
         
         //create fill-mask
         let fillWidth = frame.size.width * CGFloat(fill)
-        let fillPath = UIBezierPath(roundedRect: CGRect(x: 0, y: 0, width: fillWidth, height: frame.size.height), cornerRadius: 0)
+        let fillPath = FDBezierPath(roundedRect: CGRect(x: 0, y: 0, width: fillWidth, height: frame.size.height), cornerRadius: 0)
         fillMask = CAShapeLayer()
         fillMask.path = fillPath.cgPath
         

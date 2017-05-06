@@ -6,7 +6,8 @@
 //  Copyright © 2016 Felix Deil. All rights reserved.
 //
 
-import UIKit
+//import UIKit
+import QuartzCore
 
 /**
  This `UIView` displays a circle, that can be fully or partially filled.
@@ -59,7 +60,7 @@ internal class FDCircleView: FDRatingElementView {
         
         //layer for complete filled star
         fullCircle = CAShapeLayer()
-        fullCircle.path = UIBezierPath(ovalIn: CGRect(x: 0, y: 0, width: frame.size.height, height: frame.size.height)).cgPath
+        fullCircle.path = FDBezierPath(ovalIn: CGRect(x: 0, y: 0, width: frame.size.height, height: frame.size.height)).cgPath
         fullCircle.fillColor = fillColor.cgColor
         self.layer.addSublayer(fullCircle)
         
@@ -74,7 +75,7 @@ internal class FDCircleView: FDRatingElementView {
         
         //create fill-mask
         let fillWidth = frame.size.width * CGFloat(fill)
-        let fillPath = UIBezierPath(ovalIn: CGRect(x: 0, y: 0, width: fillWidth, height: frame.size.height))
+        let fillPath = FDBezierPath(ovalIn: CGRect(x: 0, y: 0, width: fillWidth, height: frame.size.height))
         fillMask = CAShapeLayer()
         fillMask.path = fillPath.cgPath
         

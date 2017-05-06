@@ -10,6 +10,14 @@
 
 import Foundation
 
+// Imports
+
+#if os(iOS)
+    import UIKit
+#else
+    import AppKit
+#endif
+
 // Colors
 
 #if os(iOS)
@@ -28,12 +36,21 @@ import Foundation
 
 public class FDView: FDViewWrapper {
     #if os(iOS)
-    var isFlipped: Bool {
+    public var isFlipped: Bool {
         return true
     }
     #else
-    override var isFlipped: Bool {
+    override public var isFlipped: Bool {
         return true
     }
     #endif
 }
+
+
+// BezierPath
+
+#if os(iOS)
+    public typealias FDBezierPath = UIBezierPath
+#else
+    public typealias FDBezierPath = NSBezierPath
+#endif
