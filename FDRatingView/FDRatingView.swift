@@ -6,7 +6,8 @@
 //  Copyright © 2016 Felix Deil. All rights reserved.
 //
 
-import UIKit
+//import UIKit
+import QuartzCore
 
 /**
  Defines the different styles of `FDRatingView`
@@ -20,7 +21,7 @@ public enum FDRatingViewStyle: Int {
  
  - author: Felix Deil
  */
-public class FDRatingView: UIView {
+public class FDRatingView: FDView {
     
     // - MARK: Public properties
     
@@ -29,9 +30,9 @@ public class FDRatingView: UIView {
      */
     public var numberOfElements: UInt = 5
     
-    override public var tintColor: UIColor! {
+    override public var tintColor: FDColor! {
         get {
-            return UIColor.black
+            return FDColor.black
         }
         set (color) {
             for element in elements {
@@ -70,7 +71,7 @@ public class FDRatingView: UIView {
      
      - author: Felix Deil
      */
-    public init(frame newFrame: CGRect, style: FDRatingViewStyle, numberOfElements: UInt, fillValue value: Float, color: UIColor, lineWidth: CGFloat, spacing: CGFloat) {
+    public init(frame newFrame: CGRect, style: FDRatingViewStyle, numberOfElements: UInt, fillValue value: Float, color: FDColor, lineWidth: CGFloat, spacing: CGFloat) {
         var new = newFrame
         let elementsFloat = CGFloat(numberOfElements)
         new.size.width = (newFrame.size.height + spacing) * elementsFloat - spacing
@@ -138,7 +139,7 @@ public class FDRatingView: UIView {
      
      - author: Felix Deil
      */
-    public convenience init(frame newFrame: CGRect, style: FDRatingViewStyle, numberOfElements: UInt, fillValue value: Float, color: UIColor, lineWidth: CGFloat) {
+    public convenience init(frame newFrame: CGRect, style: FDRatingViewStyle, numberOfElements: UInt, fillValue value: Float, color: FDColor, lineWidth: CGFloat) {
         self.init(frame: newFrame, style: style, numberOfElements: numberOfElements, fillValue: value, color: color, lineWidth: lineWidth, spacing: 8.0)
     }
     
@@ -157,7 +158,7 @@ public class FDRatingView: UIView {
      
      - author: Felix Deil
      */
-    public convenience init(frame newFrame: CGRect, style: FDRatingViewStyle, numberOfElements: UInt, fillValue value: Float, color: UIColor) {
+    public convenience init(frame newFrame: CGRect, style: FDRatingViewStyle, numberOfElements: UInt, fillValue value: Float, color: FDColor) {
         self.init(frame: newFrame, style: style, numberOfElements: numberOfElements, fillValue: value, color: color, lineWidth: 1)
     }
     
@@ -167,8 +168,8 @@ public class FDRatingView: UIView {
     override private init(frame: CGRect) {
         super.init(frame: frame)
         
-        backgroundColor = UIColor.clear
-        tintColor = UIView().tintColor
+        backgroundColor = FDColor.clear
+        tintColor = FDView().tintColor
     }
     
     required public init?(coder aDecoder: NSCoder) {

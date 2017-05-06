@@ -6,7 +6,9 @@
 //  Copyright © 2016 Felix Deil. All rights reserved.
 //
 
-import UIKit
+//import UIKit
+import QuartzCore
+import CoreGraphics
 
 /**
  Struct to generate paths for stars
@@ -24,8 +26,8 @@ internal struct Star {
      
      - copyright: Silviu Pop
      */
-    private func starPathInRect(_ rect: CGRect) -> UIBezierPath {
-        let path = UIBezierPath()
+    private func starPathInRect(_ rect: CGRect) -> FDBezierPath {
+        let path = FDBezierPath()
         
         let starExtrusion: CGFloat = rect.width*0.19
         
@@ -74,7 +76,7 @@ internal struct Star {
      
      - parameter rect: The square, that should contain the star
      */
-    internal func pathInRect(_ rect: CGRect) -> UIBezierPath {
+    internal func pathInRect(_ rect: CGRect) -> FDBezierPath {
         return starPathInRect(rect)
     }
     

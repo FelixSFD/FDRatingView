@@ -9,9 +9,19 @@
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
+		<key>FDRatingViewMac.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>DC493BB61DAC0E7100AA2ED6</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>DCE201B21CE3B0EA004050EA</key>
 		<dict>
 			<key>primary</key>

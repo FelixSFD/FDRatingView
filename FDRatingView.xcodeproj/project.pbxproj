@@ -8,6 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		DC32FB591D3E9EA300FDDEF4 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = DC32FB581D3E9EA300FDDEF4 /* .swiftlint.yml */; };
+		DC493BBB1DAC0E7100AA2ED6 /* FDRatingViewMac.h in Headers */ = {isa = PBXBuildFile; fileRef = DC493BB91DAC0E7100AA2ED6 /* FDRatingViewMac.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DC493BC11DAC0EE300AA2ED6 /* CrossPlatformCompatibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC493BC01DAC0EE300AA2ED6 /* CrossPlatformCompatibility.swift */; };
+		DC493BC21DAC0EE300AA2ED6 /* CrossPlatformCompatibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC493BC01DAC0EE300AA2ED6 /* CrossPlatformCompatibility.swift */; };
+		DC493BC31DAC129B00AA2ED6 /* FDRatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCE201BE1CE3B0FA004050EA /* FDRatingView.swift */; };
+		DC493BC41DAC129E00AA2ED6 /* FDRatingElementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCE7B8A21CE8CB240066AC48 /* FDRatingElementView.swift */; };
+		DC493BC51DAC12A000AA2ED6 /* FDCircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9A88801CF083040031B0D2 /* FDCircleView.swift */; };
+		DC493BC61DAC12A300AA2ED6 /* FDSquareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCE7B89D1CE8C7E80066AC48 /* FDSquareView.swift */; };
+		DC493BC71DAC12A500AA2ED6 /* FDStarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCE201BF1CE3B0FA004050EA /* FDStarView.swift */; };
+		DC493BC81DAC12A700AA2ED6 /* Star.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCE201C01CE3B0FA004050EA /* Star.swift */; };
 		DC9A88811CF083040031B0D2 /* FDCircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9A88801CF083040031B0D2 /* FDCircleView.swift */; };
 		DCE201B71CE3B0EA004050EA /* FDRatingView.h in Headers */ = {isa = PBXBuildFile; fileRef = DCE201B61CE3B0EA004050EA /* FDRatingView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DCE201C11CE3B0FA004050EA /* FDRatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCE201BE1CE3B0FA004050EA /* FDRatingView.swift */; };
@@ -19,6 +28,10 @@
 
 /* Begin PBXFileReference section */
 		DC32FB581D3E9EA300FDDEF4 /* .swiftlint.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .swiftlint.yml; sourceTree = "<group>"; };
+		DC493BB71DAC0E7100AA2ED6 /* FDRatingViewMac.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FDRatingViewMac.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DC493BB91DAC0E7100AA2ED6 /* FDRatingViewMac.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FDRatingViewMac.h; sourceTree = "<group>"; };
+		DC493BBA1DAC0E7100AA2ED6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DC493BC01DAC0EE300AA2ED6 /* CrossPlatformCompatibility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CrossPlatformCompatibility.swift; path = Shared/CrossPlatformCompatibility.swift; sourceTree = "<group>"; };
 		DC9A88801CF083040031B0D2 /* FDCircleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FDCircleView.swift; sourceTree = "<group>"; };
 		DCE201B31CE3B0EA004050EA /* FDRatingView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FDRatingView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DCE201B61CE3B0EA004050EA /* FDRatingView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FDRatingView.h; sourceTree = "<group>"; };
@@ -31,6 +44,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		DC493BB31DAC0E7100AA2ED6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		DCE201AF1CE3B0EA004050EA /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -41,6 +61,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DC493BB81DAC0E7100AA2ED6 /* FDRatingView Mac */ = {
+			isa = PBXGroup;
+			children = (
+				DC493BB91DAC0E7100AA2ED6 /* FDRatingViewMac.h */,
+				DC493BBA1DAC0E7100AA2ED6 /* Info.plist */,
+			);
+			name = "FDRatingView Mac";
+			path = FDRatingViewMac;
+			sourceTree = "<group>";
+		};
+		DC493BBF1DAC0EA500AA2ED6 /* Shared Code */ = {
+			isa = PBXGroup;
+			children = (
+				DC493BC01DAC0EE300AA2ED6 /* CrossPlatformCompatibility.swift */,
+			);
+			name = "Shared Code";
+			sourceTree = "<group>";
+		};
 		DC9A887F1CF082F50031B0D2 /* FDCircleView */ = {
 			isa = PBXGroup;
 			children = (
@@ -53,7 +91,9 @@
 			isa = PBXGroup;
 			children = (
 				DC32FB581D3E9EA300FDDEF4 /* .swiftlint.yml */,
-				DCE201B51CE3B0EA004050EA /* FDRatingView */,
+				DC493BBF1DAC0EA500AA2ED6 /* Shared Code */,
+				DCE201B51CE3B0EA004050EA /* FDRatingView iOS */,
+				DC493BB81DAC0E7100AA2ED6 /* FDRatingView Mac */,
 				DCE201B41CE3B0EA004050EA /* Products */,
 			);
 			sourceTree = "<group>";
@@ -62,11 +102,12 @@
 			isa = PBXGroup;
 			children = (
 				DCE201B31CE3B0EA004050EA /* FDRatingView.framework */,
+				DC493BB71DAC0E7100AA2ED6 /* FDRatingViewMac.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		DCE201B51CE3B0EA004050EA /* FDRatingView */ = {
+		DCE201B51CE3B0EA004050EA /* FDRatingView iOS */ = {
 			isa = PBXGroup;
 			children = (
 				DCE201BE1CE3B0FA004050EA /* FDRatingView.swift */,
@@ -77,6 +118,7 @@
 				DCE201B61CE3B0EA004050EA /* FDRatingView.h */,
 				DCE201B81CE3B0EA004050EA /* Info.plist */,
 			);
+			name = "FDRatingView iOS";
 			path = FDRatingView;
 			sourceTree = "<group>";
 		};
@@ -100,6 +142,14 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
+		DC493BB41DAC0E7100AA2ED6 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DC493BBB1DAC0E7100AA2ED6 /* FDRatingViewMac.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		DCE201B01CE3B0EA004050EA /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -111,6 +161,24 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		DC493BB61DAC0E7100AA2ED6 /* FDRatingViewMac */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DC493BBE1DAC0E7100AA2ED6 /* Build configuration list for PBXNativeTarget "FDRatingViewMac" */;
+			buildPhases = (
+				DC493BB21DAC0E7100AA2ED6 /* Sources */,
+				DC493BB31DAC0E7100AA2ED6 /* Frameworks */,
+				DC493BB41DAC0E7100AA2ED6 /* Headers */,
+				DC493BB51DAC0E7100AA2ED6 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = FDRatingViewMac;
+			productName = FDRatingViewMac;
+			productReference = DC493BB71DAC0E7100AA2ED6 /* FDRatingViewMac.framework */;
+			productType = "com.apple.product-type.framework";
+		};
 		DCE201B21CE3B0EA004050EA /* FDRatingView */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = DCE201BB1CE3B0EA004050EA /* Build configuration list for PBXNativeTarget "FDRatingView" */;
@@ -139,6 +207,11 @@
 				LastUpgradeCheck = 0730;
 				ORGANIZATIONNAME = "Felix Deil";
 				TargetAttributes = {
+					DC493BB61DAC0E7100AA2ED6 = {
+						CreatedOnToolsVersion = 8.0;
+						LastSwiftMigration = 0800;
+						ProvisioningStyle = Automatic;
+					};
 					DCE201B21CE3B0EA004050EA = {
 						CreatedOnToolsVersion = 7.3;
 						LastSwiftMigration = 0800;
@@ -158,11 +231,19 @@
 			projectRoot = "";
 			targets = (
 				DCE201B21CE3B0EA004050EA /* FDRatingView */,
+				DC493BB61DAC0E7100AA2ED6 /* FDRatingViewMac */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		DC493BB51DAC0E7100AA2ED6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		DCE201B11CE3B0EA004050EA /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -191,6 +272,20 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		DC493BB21DAC0E7100AA2ED6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DC493BC71DAC12A500AA2ED6 /* FDStarView.swift in Sources */,
+				DC493BC51DAC12A000AA2ED6 /* FDCircleView.swift in Sources */,
+				DC493BC41DAC129E00AA2ED6 /* FDRatingElementView.swift in Sources */,
+				DC493BC81DAC12A700AA2ED6 /* Star.swift in Sources */,
+				DC493BC21DAC0EE300AA2ED6 /* CrossPlatformCompatibility.swift in Sources */,
+				DC493BC61DAC12A300AA2ED6 /* FDSquareView.swift in Sources */,
+				DC493BC31DAC129B00AA2ED6 /* FDRatingView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		DCE201AE1CE3B0EA004050EA /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -200,6 +295,7 @@
 				DCE201C31CE3B0FA004050EA /* Star.swift in Sources */,
 				DCE201C21CE3B0FA004050EA /* FDStarView.swift in Sources */,
 				DCE201C11CE3B0FA004050EA /* FDRatingView.swift in Sources */,
+				DC493BC11DAC0EE300AA2ED6 /* CrossPlatformCompatibility.swift in Sources */,
 				DCE7B89E1CE8C7E80066AC48 /* FDSquareView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -207,6 +303,61 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
+		DC493BBC1DAC0E7100AA2ED6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				INFOPLIST_FILE = FDRatingViewMac/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				PRODUCT_BUNDLE_IDENTIFIER = de.felixdeil.FDRatingViewMac;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		DC493BBD1DAC0E7100AA2ED6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				INFOPLIST_FILE = FDRatingViewMac/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				PRODUCT_BUNDLE_IDENTIFIER = de.felixdeil.FDRatingViewMac;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
 		DCE201B91CE3B0EA004050EA /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -338,6 +489,14 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		DC493BBE1DAC0E7100AA2ED6 /* Build configuration list for PBXNativeTarget "FDRatingViewMac" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DC493BBC1DAC0E7100AA2ED6 /* Debug */,
+				DC493BBD1DAC0E7100AA2ED6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		DCE201AD1CE3B0E9004050EA /* Build configuration list for PBXProject "FDRatingView" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

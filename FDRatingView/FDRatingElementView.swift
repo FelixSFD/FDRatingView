@@ -17,12 +17,12 @@ public protocol FDRatingViewValueEditable {
  
  - author: Felix Deil
  */
-internal class FDRatingElementView: UIView {
+internal class FDRatingElementView: FDView {
     
     /**
      The tintColor of the element
      */
-    override internal var tintColor: UIColor! {
+    override internal var tintColor: FDColor! {
         get {
             return self.tintColor
         }
