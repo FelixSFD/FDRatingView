@@ -6,8 +6,22 @@
 //  Copyright © 2016 Felix Deil. All rights reserved.
 //
 
-//import UIKit
+#if os(iOS)
+import UIKit
+#endif
 import QuartzCore
+
+/**
+ A delegate protocol to inform the delegate about changes in the rating view.
+ */
+public protocol FDRatingViewDelegate {
+    /**
+     Tells the delegate, that the value was changed
+     
+     - parameter newValue: The new value
+     */
+    func ratingView(valueChangedTo newValue: Float)
+}
 
 /**
  Defines the different styles of `FDRatingView`
@@ -40,6 +54,13 @@ public class FDRatingView: FDView {
             }
         }
     }
+    
+    /**
+     If `true`, tapping an item can result in a decimal value for the `FDRatingView`. Otherwise, `ceilf()` is used.
+     */
+    public var allowDecimalValues = false
+    
+    public var delegate: FDRatingViewDelegate?
     
     
     // - MARK: Private properties
@@ -120,6 +141,13 @@ public class FDRatingView: FDView {
         for element in elements {
             addSubview(element)
         }
+        
+        
+        //configure touches
+        #if os(iOS)
+            let touch = UITapGestureRecognizer(target: self, action: #selector(tapHandler(_:)))
+            self.addGestureRecognizer(touch)
+        #endif
     }
     
     /**
@@ -202,5 +230,33 @@ public class FDRatingView: FDView {
             element.changeFillValue(tmpRating, animated: false)
         }
     }
+    
+    
+    // - MARK: Handle touches (iOS-only!)
+    #if os(iOS)
+    internal func tapHandler(_ gesture: UITapGestureRecognizer) {
+        //only fire when touch ends
+        if gesture.state == .ended {
+            let tapLocation = gesture.location(in: self)
+            var tappedItem = Float(tapLocation.x/(self.frame.width/CGFloat(numberOfElements)))
+            
+            if !allowDecimalValues {
+                tappedItem = ceilf(tappedItem)
+            }
+            
+            set(value: tappedItem)
+            delegate?.ratingView(valueChangedTo: tappedItem)
+        }
+    }
+    #else
+    
+    #endif
+    
+    
+    
+    
+    
+    
+    
     
 }
