@@ -6,13 +6,28 @@
 //  Copyright © 2016 Felix Deil. All rights reserved.
 //
 
+#if os(iOS)
 import UIKit
+#endif
+import QuartzCore
+
+/**
+ A delegate protocol to inform the delegate about changes in the rating view.
+ */
+public protocol FDRatingViewDelegate {
+    /**
+     Tells the delegate, that the value was changed
+     
+     - parameter newValue: The new value
+     */
+    func ratingView(valueChangedTo newValue: Float)
+}
 
 /**
  Defines the different styles of `FDRatingView`
  */
-public enum FDRatingViewStyle:Int {
-    case Star, Square, Circle
+public enum FDRatingViewStyle: Int {
+    case star, square, circle
 }
 
 /**
@@ -20,18 +35,18 @@ public enum FDRatingViewStyle:Int {
  
  - author: Felix Deil
  */
-public class FDRatingView:UIView {
+public class FDRatingView: FDView {
     
     // - MARK: Public properties
     
     /**
      The number of elements (for example stars) to display (default is 5)
      */
-    public var numberOfElements:UInt = 5
+    public var numberOfElements: UInt = 5
     
-    override public var tintColor:UIColor! {
+    override public var tintColor: FDColor! {
         get {
-            return UIColor.blackColor()
+            return FDColor.black
         }
         set (color) {
             for element in elements {
@@ -40,13 +55,20 @@ public class FDRatingView:UIView {
         }
     }
     
+    /**
+     If `true`, tapping an item can result in a decimal value for the `FDRatingView`. Otherwise, `ceilf()` is used.
+     */
+    public var allowDecimalValues = false
+    
+    public var delegate: FDRatingViewDelegate?
+    
     
     // - MARK: Private properties
     
     /**
      Stores all displayed elements in an `[FDRatingElementView]`-array
      */
-    private var elements:[FDRatingElementView]! = [FDRatingElementView]()
+    private var elements = [FDRatingElementView]()
     
     
     // - MARK: Initializers
@@ -70,7 +92,7 @@ public class FDRatingView:UIView {
      
      - author: Felix Deil
      */
-    public init(frame newFrame:CGRect, style:FDRatingViewStyle, numberOfElements:UInt, fillValue value:Float, color:UIColor, lineWidth:CGFloat, spacing:CGFloat) {
+    public init(frame newFrame: CGRect, style: FDRatingViewStyle, numberOfElements: UInt, fillValue value: Float, color: FDColor, lineWidth: CGFloat, spacing: CGFloat) {
         var new = newFrame
         let elementsFloat = CGFloat(numberOfElements)
         new.size.width = (newFrame.size.height + spacing) * elementsFloat - spacing
@@ -85,9 +107,9 @@ public class FDRatingView:UIView {
         
         //create elements and store them in the array
         for _ in 1...numberOfElements {
-            let elementFrame = CGRectMake(xOffset, 0.0, height, height)
+            let elementFrame = CGRect(x: xOffset, y: 0.0, width: height, height: height)
             
-            var tmpRating:Float = 0
+            var tmpRating: Float = 0
             
             if ratingValue > 1 {
                 tmpRating = 1
@@ -95,18 +117,20 @@ public class FDRatingView:UIView {
             } else if ratingValue > 0 {
                 tmpRating = ratingValue
                 ratingValue = 0
+            } else {
+                tmpRating = 0
             }
             
             switch style {
-            case .Square:
+            case .square:
                 elements.append(FDSquareView(frame: elementFrame, fillValue: tmpRating, color: color, lineWidth: lineWidth))
-                break;
-            case .Star:
+                break
+            case .star:
                 elements.append(FDStarView(frame: elementFrame, fillValue: tmpRating, color: color, lineWidth: lineWidth))
-                break;
-            case .Circle:
+                break
+            case .circle:
                 elements.append(FDCircleView(frame: elementFrame, fillValue: tmpRating, color: color, lineWidth: lineWidth))
-                break;
+                break
             }
             
             xOffset += CGFloat(height + spacing)
@@ -117,6 +141,13 @@ public class FDRatingView:UIView {
         for element in elements {
             addSubview(element)
         }
+        
+        
+        //configure touches
+        #if os(iOS)
+            let touch = UITapGestureRecognizer(target: self, action: #selector(tapHandler(_:)))
+            self.addGestureRecognizer(touch)
+        #endif
     }
     
     /**
@@ -136,7 +167,7 @@ public class FDRatingView:UIView {
      
      - author: Felix Deil
      */
-    public convenience init(frame newFrame:CGRect, style:FDRatingViewStyle, numberOfElements:UInt, fillValue value:Float, color:UIColor, lineWidth:CGFloat) {
+    public convenience init(frame newFrame: CGRect, style: FDRatingViewStyle, numberOfElements: UInt, fillValue value: Float, color: FDColor, lineWidth: CGFloat) {
         self.init(frame: newFrame, style: style, numberOfElements: numberOfElements, fillValue: value, color: color, lineWidth: lineWidth, spacing: 8.0)
     }
     
@@ -155,7 +186,7 @@ public class FDRatingView:UIView {
      
      - author: Felix Deil
      */
-    public convenience init(frame newFrame:CGRect, style:FDRatingViewStyle, numberOfElements:UInt, fillValue value:Float, color:UIColor) {
+    public convenience init(frame newFrame: CGRect, style: FDRatingViewStyle, numberOfElements: UInt, fillValue value: Float, color: FDColor) {
         self.init(frame: newFrame, style: style, numberOfElements: numberOfElements, fillValue: value, color: color, lineWidth: 1)
     }
     
@@ -165,11 +196,67 @@ public class FDRatingView:UIView {
     override private init(frame: CGRect) {
         super.init(frame: frame)
         
-        backgroundColor = UIColor.clearColor()
-        tintColor = UIView().tintColor
+        backgroundColor = FDColor.clear
+        tintColor = FDView().tintColor
     }
     
     required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    // - MARK: Set value of the RatingView
+    
+    /**
+     Sets the new value of the `FDRatingView`
+     
+     - parameter value: The new value. Should not be larger than `numberOfElements`
+     
+     - author: Felix Deil
+     */
+    public func set(value: Float) {
+        var tmpRating: Float = 0
+        var ratingValue = value
+        
+        for element in elements {
+            if ratingValue > 1 {
+                tmpRating = 1
+                ratingValue -= 1
+            } else if ratingValue > 0 {
+                tmpRating = ratingValue
+                ratingValue = 0
+            } else {
+                tmpRating = 0
+            }
+            element.changeFillValue(tmpRating, animated: false)
+        }
+    }
+    
+    
+    // - MARK: Handle touches (iOS-only!)
+    #if os(iOS)
+    internal func tapHandler(_ gesture: UITapGestureRecognizer) {
+        //only fire when touch ends
+        if gesture.state == .ended {
+            let tapLocation = gesture.location(in: self)
+            var tappedItem = Float(tapLocation.x/(self.frame.width/CGFloat(numberOfElements)))
+            
+            if !allowDecimalValues {
+                tappedItem = ceilf(tappedItem)
+            }
+            
+            set(value: tappedItem)
+            delegate?.ratingView(valueChangedTo: tappedItem)
+        }
+    }
+    #else
+    
+    #endif
+    
+    
+    
+    
+    
+    
+    
+    
 }

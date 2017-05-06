@@ -1,7 +1,7 @@
 # FDRatingView
 
 ## Requirements
-`FDRatingView` requires Swift 2.2 and Xcode 7.3.
+`FDRatingView` requires Swift 3.0 and Xcode 8.
 
 ## Installation
 ### CocoaPods
@@ -21,7 +21,7 @@ Then initialize the Object with one of the available initializers and add the vi
 ![Screenshot 5 Stars](http://i.imgur.com/WlxcJty.png "Screenshot 5 Stars")
 
 ```swift
-let ratingView = FDRatingView(frame: CGRectMake(32, 32, 16, 16), style:.Star, numberOfStars: 5, fillValue: 2.33, color: UIColor.redColor(), lineWidth:0.7, spacing:3.0)
+let ratingView = FDRatingView(frame: CGRect(32, 32, 16, 16), style: .star, numberOfStars: 5, fillValue: 2.33, color: .red, lineWidth:0.7, spacing:3.0)
 view.addSubview(ratingView)
 ```
 
@@ -30,7 +30,7 @@ view.addSubview(ratingView)
 ![Screenshot 3 Stars](http://i.imgur.com/cNZmnl3.png "Screenshot 3 Stars")
 
 ```swift
-let ratingView = FDRatingView(frame: CGRectMake(32, 32, 16, 16), style:.Star, numberOfStars: 3, fillValue: 3, color: UIColor.blackColor())
+let ratingView = FDRatingView(frame: CGRect(32, 32, 16, 16), style: .star, numberOfStars: 3, fillValue: 3, color: .black)
 view.addSubview(ratingView)
 ```
 Use `pod 'FDRatingView', :git => 'https://github.com/FelixSFD/FDRatingView.git'` to install this pod
