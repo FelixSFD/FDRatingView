@@ -12,6 +12,18 @@ import UIKit
 import QuartzCore
 
 /**
+ A delegate protocol to inform the delegate about changes in the rating view.
+ */
+public protocol FDRatingViewDelegate {
+    /**
+     Tells the delegate, that the value was changed
+     
+     - parameter newValue: The new value
+     */
+    func ratingView(valueChangedTo newValue: Float)
+}
+
+/**
  Defines the different styles of `FDRatingView`
  */
 public enum FDRatingViewStyle: Int {
@@ -47,6 +59,8 @@ public class FDRatingView: FDView {
      If `true`, tapping an item can result in a decimal value for the `FDRatingView`. Otherwise, `ceilf()` is used.
      */
     public var allowDecimalValues = false
+    
+    public var delegate: FDRatingViewDelegate?
     
     
     // - MARK: Private properties
@@ -230,8 +244,8 @@ public class FDRatingView: FDView {
                 tappedItem = ceilf(tappedItem)
             }
             
-            print(tappedItem)
             set(value: tappedItem)
+            delegate?.ratingView(valueChangedTo: tappedItem)
         }
     }
     #else
