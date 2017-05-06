@@ -33,3 +33,4 @@ view.addSubview(ratingView)
 let ratingView = FDRatingView(frame: CGRect(32, 32, 16, 16), style: .star, numberOfStars: 3, fillValue: 3, color: .black)
 view.addSubview(ratingView)
 ```
+Use `pod 'FDRatingView', :git => 'https://github.com/FelixSFD/FDRatingView.git'` to install this pod
