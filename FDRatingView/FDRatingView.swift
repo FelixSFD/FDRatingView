@@ -6,7 +6,9 @@
 //  Copyright © 2016 Felix Deil. All rights reserved.
 //
 
-//import UIKit
+#if os(iOS)
+import UIKit
+#endif
 import QuartzCore
 
 /**
@@ -120,6 +122,13 @@ public class FDRatingView: FDView {
         for element in elements {
             addSubview(element)
         }
+        
+        
+        //configure touches
+        #if os(iOS)
+            let touch = UITapGestureRecognizer(target: self, action: #selector(tapHandler(_:)))
+            self.addGestureRecognizer(touch)
+        #endif
     }
     
     /**
@@ -202,5 +211,31 @@ public class FDRatingView: FDView {
             element.changeFillValue(tmpRating, animated: false)
         }
     }
+    
+    
+    // - MARK: Handle touches (iOS-only!)
+    #if os(iOS)
+    func tapHandler(_ gesture: UITapGestureRecognizer) {
+        //only fire when touch ends
+        if gesture.state == .ended {
+            let tapLocation = gesture.location(in: self)
+            print()
+            
+            let tappedItem = ceilf(Float(tapLocation.x/(self.frame.width/CGFloat(numberOfElements))))
+            print(tappedItem)
+            
+            set(value: tappedItem)
+        }
+    }
+    #else
+    
+    #endif
+    
+    
+    
+    
+    
+    
+    
     
 }
