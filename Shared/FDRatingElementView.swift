@@ -6,8 +6,6 @@
 //  Copyright © 2016 Felix Deil. All rights reserved.
 //
 
-import UIKit
-
 public protocol FDRatingViewValueEditable {
     func changeFillValue(_ value: Float, animated: Bool)
 }
