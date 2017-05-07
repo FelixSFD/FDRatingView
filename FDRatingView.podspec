@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "FDRatingView"
-  s.version      = "0.1.0"
+  s.version      = "0.1.1"
   s.summary      = "FDRatingView is a subclass of UIView that can easily display a rating of something."
 
   # This description is used to generate tags and improve search results.
@@ -25,7 +25,7 @@ Pod::Spec.new do |s|
   #   * Write the description between the DESC delimiters below.
   #   * Finally, don't worry about the indent, CocoaPods strips it!
   s.description  = <<-DESC
-FDRatingView is an UIView that can easily display a rating of something.
+FDRatingView is an UIView that can easily display a rating of something. It is highly customizeable and on iOS, users can even interact with it.
                    DESC
 
   s.homepage     = "https://github.com/FelixSFD/FDRatingView"
@@ -72,7 +72,7 @@ FDRatingView is an UIView that can easily display a rating of something.
   s.osx.deployment_target = "10.11"
   # s.watchos.deployment_target = "2.0"
   # s.tvos.deployment_target = "9.0"
-
+  #s.swift-version = "3.0"
 
   # ――― Source Location ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
   #
@@ -80,7 +80,7 @@ FDRatingView is an UIView that can easily display a rating of something.
   #  Supports git, hg, bzr, svn and HTTP.
   #
 
-  s.source       = { :git => "https://github.com/FelixSFD/FDRatingView.git", :tag => "0.1.0" }
+  s.source       = { :git => "https://github.com/FelixSFD/FDRatingView.git", :tag => "0.1.1" }
 
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
@@ -91,7 +91,11 @@ FDRatingView is an UIView that can easily display a rating of something.
   #  Not including the public_header_files will make all headers public.
   #
 
-  s.source_files = "FDRatingView/**/*.{swift,h}"
+  s.source_files = "Shared/**/*.{swift,h}"
+  #s.source_files = "FDRatingView/Shared/*.swift"
+  s.ios.source_files = "FDRatingView/**/*.{swift,h}"
+  s.osx.source_files = "FDRatingViewMac/**/*.{swift,h}"
+
 #s.exclude_files = "Classes/Exclude"
 
   # s.public_header_files = "Classes/**/*.h"
