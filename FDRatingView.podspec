@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "FDRatingView"
-  s.version      = "0.1.2"
+  s.version      = "0.1.3"
   s.summary      = "FDRatingView is a subclass of UIView that can easily display a rating of something."
 
   # This description is used to generate tags and improve search results.
@@ -65,11 +65,11 @@ FDRatingView is an UIView that can easily display a rating of something. It is h
   #
 
   # s.platform     = :ios
-  #s.platform     = :ios, "8.0"
+  s.platform     = :ios, "8.0"
 
   #  When using multiple platforms
-  s.ios.deployment_target = "8.0"
-  s.osx.deployment_target = "10.11"
+  #s.ios.deployment_target = "8.0"
+  #s.osx.deployment_target = "10.11"
   # s.watchos.deployment_target = "2.0"
   # s.tvos.deployment_target = "9.0"
   #s.swift-version = "3.0"
@@ -80,7 +80,7 @@ FDRatingView is an UIView that can easily display a rating of something. It is h
   #  Supports git, hg, bzr, svn and HTTP.
   #
 
-  s.source       = { :git => "https://github.com/FelixSFD/FDRatingView.git", :tag => "0.1.2" }
+  s.source       = { :git => "https://github.com/FelixSFD/FDRatingView.git", :tag => "0.1.3" }
 
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
@@ -94,7 +94,7 @@ FDRatingView is an UIView that can easily display a rating of something. It is h
   s.source_files = "Shared/**/*.{swift,h}"
   #s.source_files = "FDRatingView/Shared/*.swift"
   s.ios.source_files = "FDRatingView/**/*.{swift,h}"
-  s.osx.source_files = "FDRatingViewMac/**/*.{swift,h}"
+  #s.osx.source_files = "FDRatingViewMac/**/*.{swift,h}"
 
 #s.exclude_files = "Classes/Exclude"
 
