@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "FDRatingView"
-  s.version      = "0.1.1"
+  s.version      = "0.1.2"
   s.summary      = "FDRatingView is a subclass of UIView that can easily display a rating of something."
 
   # This description is used to generate tags and improve search results.
@@ -80,7 +80,7 @@ FDRatingView is an UIView that can easily display a rating of something. It is h
   #  Supports git, hg, bzr, svn and HTTP.
   #
 
-  s.source       = { :git => "https://github.com/FelixSFD/FDRatingView.git", :tag => "0.1.1" }
+  s.source       = { :git => "https://github.com/FelixSFD/FDRatingView.git", :tag => "0.1.2" }
 
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
